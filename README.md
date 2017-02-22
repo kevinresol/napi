@@ -1,4 +1,4 @@
-# Native API for Haxe Targets
+# Native-friendly API for Haxe targets
 
 Write code in Haxe, distribute in native-friendly form.
 
