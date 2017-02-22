@@ -48,6 +48,7 @@ Here lists some of the extended goals that may worth discussion:
 - Genenate native-friendly class from an ordinary Haxe class
 - Macro that generates the required header/wrapper/whatnot for c++
 - Documentations, tutorials, starter kits, etc
+- Toolkit for building, testing, packing binaries, submiting to central repositories, etc
 
 ## Collaborations Welcome
 
