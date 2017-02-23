@@ -1,4 +1,4 @@
 # TODO: should be -lib
 -cp ../../src
 -cp src
-Api
+api.Api

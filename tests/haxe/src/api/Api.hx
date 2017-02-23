@@ -1,6 +1,6 @@
-package;
+package api;
 
-@:expose('Api')
+@:expose
 class Api {
 	public function new() {
 		
