@@ -11,8 +11,6 @@ class Macro {
 		
 		switch Context.getLocalType() {
 			case TInst(_, [TFun(args, ret)]):
-				if(!Context.defined('cs')) return TFun(args, ret).toComplex();
-			
 				var argcts = args.map(function(arg) return arg.t.toComplex());
 				return switch ret.getID() {
 					case 'Void':

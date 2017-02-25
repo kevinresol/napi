@@ -4,7 +4,7 @@
     "options": {
         "cwd": "${workspaceRoot}/tests"
     },
-    "args": ["cs"],
+    "args": ["node"],
     "problemMatcher": {
         "owner": "haxe",
         "pattern": {
