@@ -49,9 +49,28 @@ class Api {
 	public function getFuncSSS():Function<String->String->String> {
 		return function(s1:String, s2:String) {return 'getFuncSSS $s1, $s2';};
 	}
-	// public function getFuncVV():Func {
-	// 	return function() {trace('getFuncVV')};
-	// }
 	
-	function foo() return 234;
+	public function setFuncVV(f:Function<Void->Void>) {
+		f.call();
+	}
+	
+	public function setFuncSV(f:Function<String->Void>) {
+		f.call('haxe input');
+	}
+	
+	public function setFuncSSV(f:Function<String->String->Void>) {
+		f.call('haxe input1', 'haxe input2');
+	}
+	
+	public function setFuncVS(f:Function<Void->String>) {
+		trace(f.call());
+	}
+	
+	public function setFuncSS(f:Function<String->String>) {
+		trace(f.call('haxe input'));
+	}
+	
+	public function setFuncSSS(f:Function<String->String->String>) {
+		trace(f.call('haxe input1', 'haxe input2'));
+	}
 }
