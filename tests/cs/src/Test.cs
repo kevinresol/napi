@@ -5,8 +5,10 @@ using api;
 
 delegate void Printer();
 public class Test {
+	static int success;
 	static int errors;
 	public static void Main() {
+		success = 0;
 		errors = 0;
 		Api api = new Api();
 		
@@ -45,7 +47,8 @@ public class Test {
 		api.setFuncSS((s) => "native output " + s);
 		api.setFuncSSS((s1, s2) => "native output " + s1 + s2);
 		
-		Console.WriteLine("Done");
+		Console.WriteLine("================================");
+		Console.WriteLine(success + " Success, " + errors + " Errors");
 		Environment.Exit(errors);
 	}
 	
@@ -53,6 +56,8 @@ public class Test {
 		if(!v) {
 			errors++;
 			Console.WriteLine("Errored at line: " + line);
+		} else {
+			success++;
 		}
 	}
 }
