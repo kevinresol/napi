@@ -3,9 +3,9 @@ package napi.types;
 import Array as StdArray;
 
 #if js
-typedef Impl<T> = StdArray<T>;
+private typedef Impl<T> = StdArray<T>;
 #elseif cs
-typedef Impl<T> = cs.system.collections.generic.List_1<T>;
+private typedef Impl<T> = cs.system.collections.generic.List_1<T>;
 #end
 
 @:dce abstract Array<T>(Impl<T>) from Impl<T> {
