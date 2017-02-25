@@ -14,11 +14,9 @@ class Macro {
 					case TFun(_):
 						TPath('napi.types.Function'.asTypePath([TPType(p.toComplex())]));
 					case TInst(_.get() => {name: 'Array'}, [p]):
-						var param = TPath('napi.types.Native'.asTypePath([TPType(p.toComplex())]));
-						TPath('napi.types.Array'.asTypePath([TPType(param)]));
+						TPath('napi.types.Array'.asTypePath([TPType(native(p))]));
 					case TAbstract(_.get() => {name: 'Map'}, [_.getID() => 'String', v]):
-						var param = TPath('napi.types.Native'.asTypePath([TPType(v.toComplex())]));
-						TPath('napi.types.Map.StringMap'.asTypePath([TPType(param)]));
+						TPath('napi.types.Map.StringMap'.asTypePath([TPType(native(v))]));
 					default: 
 						p.toComplex();
 				}
@@ -41,5 +39,9 @@ class Macro {
 				}
 			default: throw 'assert';
 		}
+	}
+	
+	static function native(p:Type) {
+		return TPath('napi.types.Native'.asTypePath([TPType(p.toComplex())]));
 	}
 }
