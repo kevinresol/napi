@@ -1,22 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using api;
 
 delegate void Printer();
 public class Test {
+	static int errors;
 	public static void Main() {
+		errors = 0;
 		Api api = new Api();
 		
-		Console.WriteLine(api.getBool());
-		Console.WriteLine(api.getString());
-		Console.WriteLine(api.getInt());
-		Console.WriteLine(api.getFloat());
-		Console.WriteLine(String.Join(",", api.getBools()));
-		Console.WriteLine(String.Join(",", api.getStrings()));
-		Console.WriteLine(String.Join(",", api.getInts()));
-		Console.WriteLine(String.Join(",", api.getFloats()));
+		Assert(api.getBool());
+		Assert(api.getString().Equals("string"));
+		Assert(api.getInt() == 123);
+		Assert(api.getFloat() == 1.23);
+		Assert(String.Join(",", api.getBools()).Equals("True,False,True1"));
+		Assert(String.Join(",", api.getStrings()).Equals("a,b,c"));
+		Assert(String.Join(",", api.getInts()).Equals("123,234,345"));
+		Assert(String.Join(",", api.getFloats()).Equals("1.23,2.34,3.45"));
 		Console.WriteLine(String.Join(",", api.getFloatss()));
-		Console.WriteLine(String.Join(",", api.getStringMap()));
+		Assert(String.Join(",", api.getStringMap()).Equals("[a, 1],[b, 2],[c, 3]"));
 		
 		api.getFuncVV()();
 		api.getFuncSV()("native input");
@@ -43,5 +46,13 @@ public class Test {
 		api.setFuncSSS((s1, s2) => "native output " + s1 + s2);
 		
 		Console.WriteLine("Done");
+		Environment.Exit(errors);
+	}
+	
+	static void Assert(bool v, [CallerLineNumber] int line = 0) {
+		if(!v) {
+			errors++;
+			Console.WriteLine("Errored at line: " + line);
+		}
 	}
 }

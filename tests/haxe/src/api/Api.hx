@@ -14,7 +14,7 @@ class Api {
 	}
 	
 	public function getString():Native<String> {
-		return 'A string';
+		return 'string';
 	}
 	
 	public function getInt():Native<Int> {

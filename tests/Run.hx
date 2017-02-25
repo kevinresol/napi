@@ -45,28 +45,31 @@ class Run {
 	function mkdir(path:String) {
 		if(!path.exists()) path.createDirectory();
 	}
-	
-	function compileHaxe(target:Target) {
-		cd('tests/haxe');
-		switch command('haxe', ['build_$target.hxml']) {
+	function cmd(v:String, args:Array<String>) {
+		switch command(v, args) {
 			case 0: // ok;
 			case code: exit(code);
 		}
 	}
 	
+	function compileHaxe(target:Target) {
+		cd('tests/haxe');
+		cmd('haxe', ['build_$target.hxml']);
+	}
+	
 	function runNode() {
 		cd('.');
-		command('cp', ['tests/node/src/index.js', 'bin/node']);
+		cmd('cp', ['tests/node/src/index.js', 'bin/node']);
 		cd('bin/node');
-		command('node', ['index.js']);
+		cmd('node', ['index.js']);
 	}
 	
 	function runCs() {
 		cd('.');
 		cd('tests/cs');
-		command('mcs', ['-out:../../bin/cs/bin/Test.exe', '-r:../../bin/cs/bin/cs.dll', 'src/*.cs']);
+		cmd('mcs', ['-debug', '-out:../../bin/cs/bin/Test.exe', '-r:../../bin/cs/bin/cs.dll', 'src/*.cs']);
 		cd('bin/cs/bin');
-		command('mono', ['Test.exe']);
+		cmd('mono', ['--debug', 'Test.exe']);
 	}
 	
 	static function main() {
