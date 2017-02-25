@@ -41,7 +41,7 @@ class Api {
 		return [1.23, 2.34, 3.45];
 	}
 	
-	public function getStringMap():napi.types.Map.StringMap<Int> {
+	public function getStringMap():Native<Map<String, Int>> {
 		return [
 			'a' => 1,
 			'b' => 2,
@@ -105,7 +105,7 @@ class Api {
 		trace(v.copyAsArray());
 	}
 	
-	public function setStringMap(v:napi.types.Map.StringMap<Int>) {
+	public function setStringMap(v:Native<Map<String, Int>>) {
 		trace(v.copyToMap());
 	}
 	

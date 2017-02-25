@@ -16,6 +16,9 @@ class Macro {
 					case TInst(_.get() => {name: 'Array'}, [p]):
 						var param = TPath('napi.types.Native'.asTypePath([TPType(p.toComplex())]));
 						TPath('napi.types.Array'.asTypePath([TPType(param)]));
+					case TAbstract(_.get() => {name: 'Map'}, [_.getID() => 'String', v]):
+						var param = TPath('napi.types.Native'.asTypePath([TPType(v.toComplex())]));
+						TPath('napi.types.Map.StringMap'.asTypePath([TPType(param)]));
 					default: 
 						p.toComplex();
 				}
