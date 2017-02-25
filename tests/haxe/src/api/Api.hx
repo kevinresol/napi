@@ -41,6 +41,10 @@ class Api {
 		return [1.23, 2.34, 3.45];
 	}
 	
+	public function getFloatss():Native<Array<Array<Float>>> {
+		return [[1.23, 2.34], [3.45]];
+	}
+	
 	public function getStringMap():Native<Map<String, Int>> {
 		return [
 			'a' => 1,

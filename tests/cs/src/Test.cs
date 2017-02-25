@@ -15,6 +15,7 @@ public class Test {
 		Console.WriteLine(String.Join(",", api.getStrings()));
 		Console.WriteLine(String.Join(",", api.getInts()));
 		Console.WriteLine(String.Join(",", api.getFloats()));
+		Console.WriteLine(String.Join(",", api.getFloatss()));
 		Console.WriteLine(String.Join(",", api.getStringMap()));
 		
 		api.getFuncVV()();

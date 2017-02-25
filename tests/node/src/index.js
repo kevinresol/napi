@@ -9,6 +9,7 @@ console.log(api.getBools());
 console.log(api.getStrings());
 console.log(api.getInts());
 console.log(api.getFloats());
+console.log(api.getFloatss());
 console.log(api.getStringMap());
 
 api.getFuncVV()();
