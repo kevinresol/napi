@@ -1,3 +1,3 @@
 #!/bin/bash
 
-haxe -lib tink_core --run Run $@
+haxe run.hxml --run Run $@
