@@ -2,6 +2,7 @@ package;
 
 import Sys.*;
 
+using sys.FileSystem;
 using tink.CoreApi;
 using haxe.io.Path;
 
@@ -16,7 +17,7 @@ class Run {
 		switch args() {
 			case [v]:
 				switch v {
-					case Node:
+					case Node | Cs:
 						run(cast v);
 					default:
 						throw 'Cannot process $v';
@@ -27,6 +28,11 @@ class Run {
 	
 	function run(target:Target) {
 		compileHaxe(target);
+		
+		switch target {
+			case Node: runNode();
+			case Cs: runCs();
+		}
 	}
 	
 	/**
@@ -36,22 +42,28 @@ class Run {
 	function cd(path:String) {
 		setCwd(root + path);
 	}
+	function mkdir(path:String) {
+		if(!path.exists()) path.createDirectory();
+	}
 	
 	function compileHaxe(target:Target) {
-		var libs = [];
-		
-		var target = switch target {
-			case Node:
-				libs.push('hxnodejs');
-				new Pair('js', 'bin/node/index.js');
-			
-		}
-		
-		var args = ['build.hxml', '-' + target.a, root + target.b];
-		for(lib in libs) args = args.concat(['-lib', lib]);
-		
 		cd('tests/haxe');
-		command('haxe', args);
+		command('haxe', ['build_$target.hxml']);
+	}
+	
+	function runNode() {
+		cd('.');
+		command('cp', ['tests/node/src/index.js', 'bin/node']);
+		cd('bin/node');
+		command('node', ['index.js']);
+	}
+	
+	function runCs() {
+		cd('.');
+		cd('tests/cs');
+		command('mcs', ['-out:../../bin/cs/bin/Test.exe', '-r:../../bin/cs/bin/cs.dll', 'src/*.cs']);
+		cd('bin/cs/bin');
+		command('mono', ['Test.exe']);
 	}
 	
 	static function main() {
@@ -62,4 +74,5 @@ class Run {
 @:enum
 abstract Target(String) {
 	var Node = 'node';
+	var Cs = 'cs';
 }

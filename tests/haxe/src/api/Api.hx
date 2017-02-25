@@ -6,7 +6,7 @@ import napi.types.Function;
 @:nativeGen
 class Api {
 	public function new() {
-		
+		trace('Intialized Api');
 	}
 	
 	public function test():Func0V {

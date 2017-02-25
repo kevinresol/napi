@@ -1,0 +1,3 @@
+build.hxml
+-js ../../bin/node/api.js
+-lib hxnodejs
