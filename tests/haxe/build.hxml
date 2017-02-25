@@ -1,4 +1,4 @@
 # TODO: should be -lib
--cp ../../src
+-lib napi
 -cp src
 api.Api

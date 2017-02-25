@@ -1,0 +1,17 @@
+{
+  "name": "napi",
+  "license": "MIT",
+  "tags": [
+    "native"
+  ],
+  "classPath": "src",
+  "contributors": [
+    "kevinresol"
+  ],
+  "releasenote": "initial release",
+  "version": "0.0.0",
+  "url": "https://github.com/kevinresol/napi/",
+  "dependencies": {
+    "tink_macro": ""
+  }
+}

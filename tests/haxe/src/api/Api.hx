@@ -7,44 +7,51 @@ import napi.types.Function;
 class Api {
 	public function new() {
 		trace('Intialized Api');
+		var f:Function<Void->Void> = null;
+		// var f:Function<Int->Void> = null;
+		// var f:Function<Void->Int> = null;
+		// var f:Function<Int->Int> = null;
+		trace(f);
 	}
 	
-	public function test():Func0V {
-		return new MyFunc0V();
+	public function getString():String {
+		return 'A string';
 	}
 	
-	public function test1():Func0<Int> {
-		return new MyFunc0();
+	public function getInt():Int {
+		return 123;
 	}
 	
-	public function test2():Func1<Int, Int> {
-		return new MyFunc1(function(v) return v * v);
+	public function getFloat():Float {
+		return 1.23;
 	}
 	
-	public function test3() {
-		return new Function<Int>(1);
+	public function getFuncVV():Function<Void->Void> {
+		return function() {trace('getFuncVV');};
 	}
-}
-class MyFunc0V implements Func0V {
-	public function new() {}
-	public function invoke():Void {
-		trace('my func0');
+	
+	public function getFuncSV():Function<String->Void> {
+		return function(s:String) {trace('getFuncSV $s');};
 	}
-}
-@:nativeGen
-class MyFunc0 implements Func0<Int> {
-	public function new() {}
-	public function invoke() {
-		return 1;
+	
+	public function getFuncSSV():Function<String->String->Void> {
+		return function(s1:String, s2:String) {trace('getFuncSSV $s1, $s2');};
 	}
-}
-@:nativeGen
-class MyFunc1 implements Func1<Int, Int> {
-	var f:Int->Int;
-	public function new(f:Int->Int) {
-		this.f = f;
+	
+	public function getFuncVS():Function<Void->String> {
+		return function() {return 'getFuncVS';};
 	}
-	public function invoke(v) {
-		return f(v);
+	
+	public function getFuncSS():Function<String->String> {
+		return function(s:String) {return 'getFuncSS $s';};
 	}
+	
+	public function getFuncSSS():Function<String->String->String> {
+		return function(s1:String, s2:String) {return 'getFuncSSS $s1, $s2';};
+	}
+	// public function getFuncVV():Func {
+	// 	return function() {trace('getFuncVV')};
+	// }
+	
+	function foo() return 234;
 }
