@@ -1,7 +1,7 @@
 package napi.types;
 
 @:genericBuild(napi.types.Macro.buildFunction())
-@:dce class Function<Rest> {}
+@:dce class Function<T> {}
 
 #if js
 typedef Action__0 = Void->Void;

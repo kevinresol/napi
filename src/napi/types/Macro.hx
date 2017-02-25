@@ -7,8 +7,23 @@ import haxe.macro.Type;
 using tink.MacroApi;
 
 class Macro {
+	public static function buildNative() {
+		switch Context.getLocalType() {
+			case TInst(_, [p]):
+				return switch p {
+					case TFun(_):
+						TPath('napi.types.Function'.asTypePath([TPType(p.toComplex())]));
+					case TInst(_.get() => {name: 'Array'}, [p]):
+						var param = TPath('napi.types.Native'.asTypePath([TPType(p.toComplex())]));
+						TPath('napi.types.Array'.asTypePath([TPType(param)]));
+					default: 
+						p.toComplex();
+				}
+			default: throw 'assert';
+		}
+	}
+	
 	public static function buildFunction() {
-		
 		switch Context.getLocalType() {
 			case TInst(_, [TFun(args, ret)]):
 				var argcts = args.map(function(arg) return arg.t.toComplex());
@@ -21,8 +36,7 @@ class Macro {
 						argcts.push(ret.toComplex());
 						TPath(tp.asTypePath(argcts.map(function(ct) return TPType(ct))));
 				}
-			default:
+			default: throw 'assert';
 		}
-		throw 'Unsupported';
 	}
 }

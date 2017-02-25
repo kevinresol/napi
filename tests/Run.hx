@@ -48,7 +48,10 @@ class Run {
 	
 	function compileHaxe(target:Target) {
 		cd('tests/haxe');
-		command('haxe', ['build_$target.hxml']);
+		switch command('haxe', ['build_$target.hxml']) {
+			case 0: // ok;
+			case code: exit(code);
+		}
 	}
 	
 	function runNode() {

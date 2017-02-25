@@ -15,6 +15,7 @@ public class Test {
 		Console.WriteLine(String.Join(",", api.getStrings()));
 		Console.WriteLine(String.Join(",", api.getInts()));
 		Console.WriteLine(String.Join(",", api.getFloats()));
+		Console.WriteLine(String.Join(",", api.getStringMap()));
 		
 		api.getFuncVV()();
 		api.getFuncSV()("native input");
@@ -31,6 +32,7 @@ public class Test {
 		api.setStrings(new List<string> {"a", "b", "c"});
 		api.setInts(new List<int> {123, 234, 345});
 		api.setFloats(new List<double> {1.23, 2.34, 3.45});
+		api.setStringMap(new Dictionary<string, int>{{"a", 1}, {"b", 2}, {"c", 3}});
 		
 		api.setFuncVV(() => Console.WriteLine("setFuncVV"));
 		api.setFuncSV((s) => Console.WriteLine("setFuncSV " + s));

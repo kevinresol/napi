@@ -9,6 +9,7 @@ console.log(api.getBools());
 console.log(api.getStrings());
 console.log(api.getInts());
 console.log(api.getFloats());
+console.log(api.getStringMap());
 
 api.getFuncVV()();
 api.getFuncSV()("native input");
@@ -25,6 +26,7 @@ api.setBools([true, false, true]);
 api.setInts([123, 234, 345]);
 api.setFloats([1.23, 2.34, 3.45]);
 api.setStrings(['a', 'b', 'c']);
+api.setStringMap({a:1, b:2, c:3});
 
 api.setFuncVV(function() {console.log("setFuncVV")});
 api.setFuncSV(function(s) {console.log("setFuncSV " + s)});
