@@ -7,11 +7,6 @@ import napi.types.Function;
 class Api {
 	public function new() {
 		trace('Intialized Api');
-		var f:Function<Void->Void> = null;
-		// var f:Function<Int->Void> = null;
-		// var f:Function<Void->Int> = null;
-		// var f:Function<Int->Int> = null;
-		trace(f);
 	}
 	
 	public function getString():String {
@@ -63,14 +58,14 @@ class Api {
 	}
 	
 	public function setFuncVS(f:Function<Void->String>) {
-		trace(f.call());
+		trace("setFuncVS " + f.call());
 	}
 	
 	public function setFuncSS(f:Function<String->String>) {
-		trace(f.call('haxe input'));
+		trace("setFuncSS " + f.call('haxe input'));
 	}
 	
 	public function setFuncSSS(f:Function<String->String->String>) {
-		trace(f.call('haxe input1', 'haxe input2'));
+		trace("setFuncSSS " + f.call('haxe input1', 'haxe input2'));
 	}
 }

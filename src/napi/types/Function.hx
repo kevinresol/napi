@@ -21,11 +21,10 @@ typedef Func__2<T1, T2, R> = T1->T2->R;
 
 @:dce abstract Action_0(Action__0) from Action__0 {
 	@:from public static inline function ofFunc(f:Void->Void)
-		return #if cs untyped __cs__('() => {0}',f()); #else f; #end
+		return #if cs untyped __cs__('() => {0}', f()); #else f; #end
 	public inline function call()
 		#if cs untyped __cs__('{0}()', this); #else this(); #end
 }
-
 
 @:dce abstract Action_1<T1>(Action__1<T1>) from Action__1<T1> {
 	@:from public static inline function ofFunc<T1>(f:T1->Void)
@@ -48,7 +47,6 @@ typedef Func__2<T1, T2, R> = T1->T2->R;
 	public inline function call():R
 		return #if cs untyped __cs__('{0}()', this); #else this(); #end
 }
-
 
 @:dce abstract Func_1<T1, R>(Func__1<T1, R>) from Func__1<T1, R> {
 	@:from public static inline function ofFunc<T1, R>(f:T1->R)
