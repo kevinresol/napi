@@ -66,18 +66,6 @@ class Api {
 		return function(s1:String, s2:String) {return 'getFuncSSS $s1, $s2';};
 	}
 	
-	public function setFuncVV(f:Function<Void->Void>) {
-		f.call();
-	}
-	
-	public function setFuncSV(f:Function<String->Void>) {
-		f.call('haxe input');
-	}
-	
-	public function setFuncSSV(f:Function<String->String->Void>) {
-		f.call('haxe input1', 'haxe input2');
-	}
-	
 	public function setBool(v:Bool) {
 		trace(v);
 	}
@@ -110,15 +98,33 @@ class Api {
 		trace(v.copyAsArray());
 	}
 	
+	public function setFuncVV(f:Function<Void->Void>) {
+		f.toFunc()();
+		f.call();
+	}
+	
+	public function setFuncSV(f:Function<String->Void>) {
+		f.toFunc()('haxe input');
+		f.call('haxe input');
+	}
+	
+	public function setFuncSSV(f:Function<String->String->Void>) {
+		f.toFunc()('haxe input1', 'haxe input2');
+		f.call('haxe input1', 'haxe input2');
+	}
+	
 	public function setFuncVS(f:Function<Void->String>) {
+		trace("setFuncVS " + f.toFunc()());
 		trace("setFuncVS " + f.call());
 	}
 	
 	public function setFuncSS(f:Function<String->String>) {
+		trace("setFuncSS " + f.toFunc()('haxe input'));
 		trace("setFuncSS " + f.call('haxe input'));
 	}
 	
 	public function setFuncSSS(f:Function<String->String->String>) {
+		trace("setFuncSSS " + f.toFunc()('haxe input1', 'haxe input2'));
 		trace("setFuncSSS " + f.call('haxe input1', 'haxe input2'));
 	}
 }
