@@ -65,7 +65,6 @@ class Run {
 	}
 	
 	function runCs() {
-		cd('.');
 		cd('tests/cs');
 		cmd('mcs', ['-debug', '-out:../../bin/cs/bin/Test.exe', '-r:../../bin/cs/bin/cs.dll', 'src/*.cs']);
 		cd('bin/cs/bin');
