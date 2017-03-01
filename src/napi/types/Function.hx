@@ -3,7 +3,7 @@ package napi.types;
 @:genericBuild(napi.types.Macro.buildFunction())
 @:dce class Function<T> {}
 
-#if js
+#if (js || php7)
 typedef Action__0 = Void->Void;
 typedef Action__1<T1> = T1->Void;
 typedef Action__2<T1, T2> = T1->T2->Void;

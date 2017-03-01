@@ -1,0 +1,3 @@
+build.hxml
+-php ../../bin/php7
+-D php7

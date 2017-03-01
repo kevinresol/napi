@@ -7,6 +7,8 @@ import haxe.ds.StringMap as StdStringMap;
 private typedef Impl<T> = cs.system.collections.generic.Dictionary_2<String, T>;
 #elseif js
 private typedef Impl<T> = {};
+#elseif php7
+private typedef Impl<T> = php.NativeAssocArray<T>;
 #end
 
 @:dce abstract StringMap<V>(Impl<V>) #if !js from Impl<V> #end {
@@ -25,6 +27,8 @@ private typedef Impl<T> = {};
 			var ret = {};
 			for(key in v.keys()) Reflect.setField(ret, key, v.get(key));
 			return cast ret;
+		#elseif php7
+			return @:privateAccess v.data;
 		#end
 	}
 	
@@ -41,6 +45,8 @@ private typedef Impl<T> = {};
 			while(iter.MoveNext()) ret.set(iter.Current.Key, iter.Current.Value);
 		#elseif js
 			for(key in Reflect.fields(this)) ret.set(key, Reflect.field(this, key));
+		#elseif php7
+			@:privateAccess ret.data = this;
 		#end
 		return ret;
 	}
