@@ -1,6 +1,7 @@
 {
   "name": "napi",
   "license": "MIT",
+  "main": "napi.Run",
   "tags": [
     "native"
   ],
