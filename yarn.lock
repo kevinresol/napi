@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+haxe-travix@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/haxe-travix/-/haxe-travix-0.10.5.tgz#a7d1b2dc7858c76cfc74b347d44a636e588f99e2"
+
 lix@^15.0.0-rc.3:
   version "15.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/lix/-/lix-15.0.0-rc.3.tgz#1ceba754530ea12883ff1a618dca4712c4dd8cd3"

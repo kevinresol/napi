@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "haxe-travix": "^0.10.5",
     "lix": "^15.0.0-rc.3"
   }
 }

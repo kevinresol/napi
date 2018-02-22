@@ -1,0 +1,4 @@
+# workaround to get travix download the environements
+# https://github.com/back2dos/travix/issues/81
+-cp tests
+-main Dummy

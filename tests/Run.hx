@@ -45,10 +45,10 @@ class Run {
 	function mkdir(path:String) {
 		if(!path.exists()) path.createDirectory();
 	}
-	function cmd(v:String, args:Array<String>) {
+	function cmd(v:String, args:Array<String>, ?pos:haxe.PosInfos) {
 		switch command(v, args) {
 			case 0: // ok;
-			case code: exit(code);
+			case code: trace('Exit code: $code', pos); exit(code);
 		}
 	}
 	
@@ -77,7 +77,7 @@ class Run {
 }
 
 @:enum
-abstract Target(String) {
+abstract Target(String) to String {
 	var Node = 'node';
 	var Cs = 'cs';
 }
