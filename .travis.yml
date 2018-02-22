@@ -6,7 +6,7 @@ node_js: 6
     
 install:
   - yarn
-  - export PATH=$PATH/$(yarn bin)
+  - export PATH=$PATH:$(yarn bin)
   - lix download
   
 script:
