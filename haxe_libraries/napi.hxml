@@ -1,0 +1,2 @@
+-cp ${SCOPE_DIR}/src
+-lib tink_macro

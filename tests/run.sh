@@ -1,3 +1,5 @@
 #!/bin/bash
 
-haxe run.hxml --run Run $@
+BASEDIR=$(dirname "$0")
+echo "$BASEDIR"
+haxe --cwd "$BASEDIR" run.hxml --run Run $@

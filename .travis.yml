@@ -1,20 +1,9 @@
 sudo: required
 dist: trusty
 
-language: haxe
-
-os:
-  - linux
-  - osx
-  
-haxe:
-  - "3.4.0"
-  - development
-  
-matrix:
-  allow_failures:
-    - haxe: development
+language: node_js
+node_js: 6
     
-install:
-
 script:
+  - yarn run haxe --cwd tests run.hxml --run Run node
+  # - yarn run haxe --cwd tests run.hxml --run Run cs # TODO: install the c# environment
