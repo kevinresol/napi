@@ -4,6 +4,9 @@ dist: trusty
 language: node_js
 node_js: 6
     
+install:
+  - yarn run lix download
+  
 script:
   - yarn run haxe --cwd tests run.hxml --run Run node
   # - yarn run haxe --cwd tests run.hxml --run Run cs # TODO: install the c# environment
